@@ -26,9 +26,7 @@ class Game:
         self.board.set_piece_to(5, 5, Color.WHITE)
         self.board.set_piece_to(4, 5, Color.BLACK)
         self.board.set_piece_to(5, 4, Color.BLACK)
-
         print(self.board + "\nゲームスタート!")
-
         self.turn(self.p1)
         self.turn(self.p2)
 
