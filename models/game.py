@@ -1,7 +1,6 @@
-from board import Board
-from color import Color
-from piece import Piece
-from player import Player
+from .player import Player
+from .color import Color
+from .board import Board
 
 class Game:
     def __init__(self) -> None:
@@ -22,13 +21,12 @@ class Game:
             break
 
     def play_game(self) -> None:
-        self.board.set_piece_to(4, 4, Color.WHITE)
-        self.board.set_piece_to(5, 5, Color.WHITE)
-        self.board.set_piece_to(4, 5, Color.BLACK)
-        self.board.set_piece_to(5, 4, Color.BLACK)
+        self.board.set_piece_to(4, 4, Color.WHITE.value["value"])
+        self.board.set_piece_to(5, 5, Color.WHITE.value["value"])
+        self.board.set_piece_to(4, 5, Color.BLACK.value["value"])
+        self.board.set_piece_to(5, 4, Color.BLACK.value["value"])
         print(self.board + "\nゲームスタート!")
-        self.turn(self.p1)
-        self.turn(self.p2)
-
-g = Game()
-g.play_game()          
+       
+        while True:
+            self.turn(self.p1)
+            self.turn(self.p2)

@@ -1,17 +1,18 @@
-from color import Color
+from .color import Color
+
+
 class Piece:
-    pieces = ["●","○"]
     def __init__(self, color: Color) -> None:
         self.color = color
 
     def reverse_piece(self) -> None:#boardが使う
-        if self.color == Color.WHITE:
-            self.color = Color.BLACK
+        if self.color == 0:
+            self.color = 1
         else:
-            self.color = Color.WHITE
+            self.color = 0
 
     def get_state(self) -> str:
-        if self.color == Color.WHITE:
-            return Piece.pieces[1]
+        if self.color == Color.WHITE.value["value"]:
+            return Color.BLACK.value["value"]
         else:
-            return Piece.pieces[0]
+            return Color.WHITE.value["value"]

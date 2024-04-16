@@ -1,4 +1,5 @@
-from color import Color
+from .color import Color
+
 class Player:
     def __init__(self, name: str, color: Color) -> None:
         self.piece_has = 32 #オセロのコマの所持数
