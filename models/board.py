@@ -40,7 +40,7 @@ class Board:
         area = 0
         for y in self.board:
             for x in y:
-                if x.state == "○":
+                if x.color == "○":
                     area += 1
         return area
 
@@ -48,7 +48,7 @@ class Board:
         area = 0
         for y in self.board:
             for x in y:
-                if x.state == "●":
+                if x.color == "●":
                     area += 1
         return area
 
@@ -63,9 +63,9 @@ class Board:
         # コマを置いた左側
         target_x_left = x_offset
         for x_left in range(x_offset - 1, -1, -1):
-            if self.board[y_offset][x_left].state != self.last_puted_color and self.is_already_put(x_left, y_offset): #違う色なら
+            if self.board[y_offset][x_left].color != self.last_puted_color and self.is_already_put(x_left, y_offset): #違う色なら
                 continue
-            if (self.board[y_offset][x_left].state == self.last_puted_color) and (x_left is not x_offset):
+            if (self.board[y_offset][x_left].color == self.last_puted_color) and (x_left is not x_offset):
                 target_x_left = x_left
                 break
             else:
@@ -74,9 +74,9 @@ class Board:
         # コマを置いた右側
         target_x_right = x_offset
         for x_right in range(x_offset + 1, 8):
-            if self.board[y_offset][x_right].state != self.last_puted_color and self.is_already_put(x_right, y_offset):
+            if self.board[y_offset][x_right].color != self.last_puted_color and self.is_already_put(x_right, y_offset):
                 continue
-            if (self.board[y_offset][x_right].state == self.last_puted_color) and (x_right is not x_offset):
+            if (self.board[y_offset][x_right].color == self.last_puted_color) and (x_right is not x_offset):
                 target_x_right = x_right
                 break
             else:
@@ -95,9 +95,9 @@ class Board:
         # コマを置いた上側
         target_y_upper = y_offset
         for y_upper in range(y_offset - 1, -1, -1):
-            if self.board[y_upper][x_offset].state != self.last_puted_color and self.is_already_put(x_offset, y_upper):
+            if self.board[y_upper][x_offset].color != self.last_puted_color and self.is_already_put(x_offset, y_upper):
                 continue
-            if (self.board[y_upper][x_offset].state == self.last_puted_color) and (y_upper is not y_offset):
+            if (self.board[y_upper][x_offset].color == self.last_puted_color) and (y_upper is not y_offset):
                 target_y_upper = y_upper
                 break
             else:
@@ -106,9 +106,9 @@ class Board:
         # コマを置いた下側
         target_y_lower = y_offset
         for y_lower in range(y_offset + 1, 8):
-            if self.board[y_lower][x_offset].state != self.last_puted_color and self.is_already_put(x_offset, y_lower):
+            if self.board[y_lower][x_offset].color != self.last_puted_color and self.is_already_put(x_offset, y_lower):
                 continue
-            if (self.board[y_lower][x_offset].state == self.last_puted_color) and (y_lower is not y_offset):
+            if (self.board[y_lower][x_offset].color == self.last_puted_color) and (y_lower is not y_offset):
                 target_y_lower = y_lower
                 break
             else:
@@ -133,9 +133,9 @@ class Board:
             y_lower = y_offset + i
             if x_left < 0 or y_lower > 7: #壁にぶつかったら
                 break
-            if self.board[y_lower][x_left].state != self.last_puted_color and self.is_already_put(x_left,y_lower):  # 違う色なら
+            if self.board[y_lower][x_left].color != self.last_puted_color and self.is_already_put(x_left,y_lower):  # 違う色なら
                 continue
-            if (self.board[y_lower][x_left].state == self.last_puted_color) and (x_left is not x_offset) and (y_lower is not y_offset):
+            if (self.board[y_lower][x_left].color == self.last_puted_color) and (x_left is not x_offset) and (y_lower is not y_offset):
                 target_x_left = x_left
                 target_y_lower = y_lower
                 break
@@ -150,9 +150,9 @@ class Board:
             y_upper = y_offset - i
             if x_right > 7 or y_upper < 0:  # 壁にぶつかったら
                 break
-            if self.board[y_upper][x_right].state != self.last_puted_color and self.is_already_put(x_right,y_upper):
+            if self.board[y_upper][x_right].color != self.last_puted_color and self.is_already_put(x_right,y_upper):
                 continue
-            if (self.board[y_upper][x_right].state == self.last_puted_color) and (x_right is not x_offset) and (y_upper is not y_offset):
+            if (self.board[y_upper][x_right].color == self.last_puted_color) and (x_right is not x_offset) and (y_upper is not y_offset):
                 target_x_right = x_right
                 target_y_upper = y_upper
                 break
@@ -181,9 +181,9 @@ class Board:
             y_upper = y_offset - i
             if x_left < 0 or y_upper < 0: #壁にぶつかったら
                 break
-            if self.board[y_upper][x_left].state != self.last_puted_color and self.is_already_put(x_left,y_upper):  # 違う色なら
+            if self.board[y_upper][x_left].color != self.last_puted_color and self.is_already_put(x_left,y_upper):  # 違う色なら
                 continue
-            if (self.board[y_upper][x_left].state == self.last_puted_color) and (x_left is not x_offset) and (y_upper is not y_offset):
+            if (self.board[y_upper][x_left].color == self.last_puted_color) and (x_left is not x_offset) and (y_upper is not y_offset):
                 target_x_left = x_left
                 target_y_upper = y_upper
                 break
@@ -198,9 +198,9 @@ class Board:
             y_lower = y_offset + i
             if x_right > 7 or y_lower > 7:  # 壁にぶつかったら
                 break
-            if self.board[y_lower][x_right].state != self.last_puted_color and self.is_already_put(x_right,y_lower):
+            if self.board[y_lower][x_right].color != self.last_puted_color and self.is_already_put(x_right,y_lower):
                 continue
-            if (self.board[y_lower][x_right].state == self.last_puted_color) and (x_right is not x_offset) and (y_lower is not y_offset):
+            if (self.board[y_lower][x_right].color == self.last_puted_color) and (x_right is not x_offset) and (y_lower is not y_offset):
                 target_x_right = x_right
                 target_y_lower = y_lower
                 break
