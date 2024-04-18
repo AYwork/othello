@@ -16,6 +16,11 @@ class Color(Enum):
   "value": "○"
   }
 
+
+  def __str__(self):
+    return self.val
+
+
   @staticmethod
   def label_of(l: str) -> object:
     for k in Color:
