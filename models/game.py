@@ -3,6 +3,7 @@ from .color import Color
 from .board import Board
 from .player import Player
 from .cpu import Cpu
+from .piece import Piece
 
 class Game:
     def __init__(self) -> None:
@@ -22,11 +23,12 @@ class Game:
 
     def turn(self, player: Union[Player, Cpu]) -> None:
         while True: # 石をおく
+            # print(self.board.list_of_placeable_squares(player))
             px, py = player.put_piece()
             if (px < 0) or (px >= 8) or (py < 0) or (py >= 8):
                 print("範囲外です。")
                 continue
-            if self.board.judge_to_put(px, py, player):
+            if self.board.judge_to_put(px, py, player.color):
                 print("その場所にはコマを置けません")
                 continue
             # print(px, py)

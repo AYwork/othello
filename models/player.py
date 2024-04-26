@@ -1,13 +1,14 @@
 from .color import Color
-
+from .board import Board
 
 
 
 class Player:
-    def __init__(self, name: str, color: Color) -> None:
+    def __init__(self, name: str, color: Color,board: Board) -> None:
         self.piece_has = 32 #オセロのコマの所持数
         self.name = name
         self.color = color #WHITE or BLACK
+        self.board = board
      
     # def put_piece(self) -> None:
     #     self.piece_has -= 1
