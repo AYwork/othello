@@ -1,6 +1,6 @@
 from .color import Color
 from .piece import Piece
-
+from .player import Player
 
 
 class Board:
@@ -33,19 +33,18 @@ class Board:
         return False
     
 
-    def list_of_placeable_squares(self, color: Color) -> list:
+    def list_of_placeable_squares(self, player: Player) -> list:
         a =[]
         for px in range(8):
             for py in range(8):
-                if not (self.judge_to_put(px, py, color.color)) and not (self.is_already_put(px,py)):
-                    a.append([str(px), str(py)])
+                if (self.judge_to_put(px, py, player.color)) and not (self.is_already_put(px,py)):
+                    a.append([str(px+1), str(py+1)])
         # print(a,"aaaaaaaa")
         return a
-        
 
 
     def judge_to_put(self, px: int, py: int, color: Color) -> bool:
-        flag = True
+        flag = False
         x_offset = px
         y_offset = py
         ########################################
@@ -62,7 +61,6 @@ class Board:
             # print(type(self.last_puted_color))
             if (self.pieces[y_offset][x_left].state == color) and (x_left is not x_offset):
                 target_x_left = x_left
-                flag = False
                 break
             else:
                 break
@@ -74,18 +72,18 @@ class Board:
                 continue
             if (self.pieces[y_offset][x_right].state == color) and (x_right is not x_offset):
                 target_x_right = x_right
-                flag = False
+                flag = True
                 break
             else:
                 break
 
         # 書き換え
-        # for x in range(x_offset - 1, target_x_left, -1):
-        #     self.pieces[y_offset][x].reverse_piece()
+        for x in range(x_offset - 1, target_x_left, -1):
+            self.pieces[y_offset][x].reverse_piece()
             
 
-        # for x in range(x_offset + 1, target_x_right):
-        #     self.pieces[y_offset][x].reverse_piece()
+        for x in range(x_offset + 1, target_x_right):
+            self.pieces[y_offset][x].reverse_piece()
 
         ########################################
         # 列
@@ -97,7 +95,7 @@ class Board:
                 continue
             if (self.pieces[y_upper][x_offset].state == color) and (y_upper is not y_offset):
                 target_y_upper = y_upper
-                flag = False
+                flag = True
                 break
             else:
                 break
@@ -109,7 +107,7 @@ class Board:
                 continue
             if (self.pieces[y_lower][x_offset].state == color) and (y_lower is not y_offset):
                 target_y_lower = y_lower
-                flag = False
+                flag = True
                 break
             else:
                 break
@@ -139,7 +137,7 @@ class Board:
             if (self.pieces[y_lower][x_left].state == color) and (x_left is not x_offset) and (y_lower is not y_offset):
                 target_x_left = x_left
                 target_y_lower = y_lower
-                flag = False
+                flag = True
                 break
             else:
                 break
@@ -157,7 +155,7 @@ class Board:
             if (self.pieces[y_upper][x_right].state == color) and (x_right is not x_offset) and (y_upper is not y_offset):
                 target_x_right = x_right
                 target_y_upper = y_upper
-                flag = False
+                flag = True
                 break
             else:
                 break
@@ -189,7 +187,7 @@ class Board:
             if (self.pieces[y_upper][x_left].state == color) and (x_left is not x_offset) and (y_upper is not y_offset):
                 target_x_left = x_left
                 target_y_upper = y_upper
-                flag = False
+                flag = True
                 break
             else:
                 break
@@ -208,7 +206,7 @@ class Board:
             if (self.pieces[y_lower][x_right].state == color) and (x_right is not x_offset) and (y_lower is not y_offset):
                 target_x_right = x_right
                 target_y_lower = y_lower
-                flag = False
+                flag = True
                 break
             else:
                 break
