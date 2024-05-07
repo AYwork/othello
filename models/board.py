@@ -32,7 +32,6 @@ class Board:
             return True
         return False
     
-
     def list_of_placeable_squares(self, player: Player) -> list:
         # 置けるマスの一覧を返す
         placeable_list =[]
@@ -41,7 +40,6 @@ class Board:
                 if (self.judge_to_put(px, py, player.color)) and not (self.is_already_put(px,py)):
                     placeable_list.append([str(px+1), str(py+1)])
         return placeable_list
-
 
     def judge_to_put(self, px: int, py: int, color: Color) -> bool:
         # 指定のマスにコマを置けるか判断する
@@ -382,7 +380,6 @@ class Board:
             x = x_offset + i
             y = y_offset + i
             self.pieces[y][x].reverse_piece()
-
 
     def black_is_win(self):
         if self.calc_black_area() > self.calc_white_area():

@@ -28,8 +28,6 @@ class Game:
         px, py = player.put_piece(placeable_list)
         self.board.set_piece_to(px, py, player.color)
     
-       
-
     def play_game(self) -> None:
         # ゲームスタートから終わりまでの流れ
         self.board.set_piece_to(3, 3, Color.WHITE)

@@ -8,8 +8,7 @@ class Player:
         self.piece_has = 32 # オセロのコマの所持数
         self.name      = name
         self.color     = color # WHITE or BLACK
-     
-
+    
     def put_piece(self, placeable_list: list) -> None:  
         # プレイヤー1がコマを置く操作
         print(placeable_list)
