@@ -7,11 +7,12 @@ from .piece import Piece
 
 class Game:
     def __init__(self) -> None:
-        self.p1 = Player("Player1", Color.WHITE) #white
-        self.p2 = Cpu("Player2", Color.BLACK) #black
+        self.p1    = Player("Player1", Color.WHITE) # white
+        self.p2    = Cpu("Player2", Color.BLACK) # black
         self.board = Board()
 
     def finish_game(self):
+        # ゲームを終わらせる
         if self.board.black_is_win() is not None:
             if self.board.black_is_win():
                 print("黒が勝ちです。")
@@ -22,27 +23,15 @@ class Game:
         exit()
 
     def turn(self, player: Union[Player, Cpu]) -> None:
-        # while True: # 石をおく
+        # 石をおく
         placeable_list = self.board.list_of_placeable_squares(player)
-        # print(placeable_list)
-        # print("aaaaa")
         px, py = player.put_piece(placeable_list)
-        #     # if (px < 0) or (px >= 8) or (py < 0) or (py >= 8):
-        #     #     print("範囲外です。")
-        #     #     continue
-        # if self.board.judge_to_put(px, py, player.color):
-        #     print("その場所にはコマを置けません")
-        #         # continue
-        #     # print(px, py)
-        # if self.board.is_already_put(px, py):
-        #     print("その場所には既にコマが置かれています。")
-                # continue
-            # print(px, py)
         self.board.set_piece_to(px, py, player.color)
-            # break
+    
        
 
     def play_game(self) -> None:
+        # ゲームスタートから終わりまでの流れ
         self.board.set_piece_to(3, 3, Color.WHITE)
         self.board.set_piece_to(4, 4, Color.WHITE)
         self.board.set_piece_to(3, 4, Color.BLACK)
