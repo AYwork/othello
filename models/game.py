@@ -24,7 +24,7 @@ class Game:
 
     def turn(self, player: Union[Player, Cpu]) -> None:
         # 石をおく
-        placeable_list = self.board.list_of_placeable_squares(player)
+        placeable_list = self.board.get_placeable_list(player)
         px, py = player.put_piece(placeable_list)
         self.board.set_piece_to(px, py, player.color)
     
@@ -36,7 +36,8 @@ class Game:
         self.board.set_piece_to(4, 3, Color.BLACK)
         print(self.board + "\nゲームスタート!\n(qでゲームを中断して終了します)")
 
-        while (self.p1.piece_has != 0) and (self.p2.piece_has != 0):
+        # while (self.p1.piece_has != 0) and (self.p2.piece_has != 0):
+        while not (self.p1.has_no_piece()) and not (self.p2.has_no_piece()):    
             self.turn(self.p1)
             self.board.update()
             print(self.board)

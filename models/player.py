@@ -30,3 +30,9 @@ class Player:
         px = int(p_puts[0]) - 1
         py = int(p_puts[1]) - 1
         return px, py
+    
+    def has_no_piece(self) -> bool:
+        if self.piece_has == 0:
+            return True
+        else:
+            return False

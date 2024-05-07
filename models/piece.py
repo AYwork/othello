@@ -22,3 +22,9 @@ class Piece:
 
     def __str__(self):
         return self.state
+    
+    def is_same_color(self, color:Color) -> bool:
+       if self.state == color:
+           return True
+       else:
+           return False

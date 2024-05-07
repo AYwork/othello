@@ -18,6 +18,11 @@ class Cpu:
         py = int(p_puts[1]) - 1
         return px, py
     
-   
-        # if p_puts[0] == 'q':
+    def has_no_piece(self) -> bool:
+        if self.piece_has == 0:
+            return True
+        else:
+            return False        
+        
+    # if p_puts[0] == 'q':
         #     self.game.finish_game()      
