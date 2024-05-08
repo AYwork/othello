@@ -31,8 +31,12 @@ class Player:
         py = int(p_puts[1]) - 1
         return px, py
     
+    @property
     def has_no_piece(self) -> bool:
-        if self.piece_has == 0:
-            return True
-        else:
-            return False
+        return self.piece_has == 0
+
+    # def has_no_piece(self) -> bool:
+    #     if self.piece_has == 0:
+    #         return True
+    #     else:
+    #         return False

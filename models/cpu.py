@@ -8,7 +8,7 @@ class Cpu:
         self.piece_has = 32 # オセロのコマの所持数
         self.name      = name
         self.color     = color # WHITE or BLACK
-        
+    
     def put_piece(self, placeable_list: list) -> None:
         #cpuがコマをおく操作
         print("{}の手番です".format(self.name))
@@ -18,11 +18,9 @@ class Cpu:
         py = int(p_puts[1]) - 1
         return px, py
     
+    @property
     def has_no_piece(self) -> bool:
-        if self.piece_has == 0:
-            return True
-        else:
-            return False        
-        
+        return self.piece_has == 0
+    
     # if p_puts[0] == 'q':
         #     self.game.finish_game()      

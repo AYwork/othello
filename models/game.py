@@ -37,7 +37,7 @@ class Game:
         print(self.board + "\nゲームスタート!\n(qでゲームを中断して終了します)")
 
         # while (self.p1.piece_has != 0) and (self.p2.piece_has != 0):
-        while not (self.p1.has_no_piece()) and not (self.p2.has_no_piece()):    
+        while not (self.p1.has_no_piece) and not (self.p2.has_no_piece):    
             self.turn(self.p1)
             self.board.update()
             print(self.board)
